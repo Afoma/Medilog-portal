@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Afoma Antoinette Orji">
+
+  <title> Admin - Login</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-dark">
+
+  <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header">Login</div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="email" id="inputEmail"  class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+              <label for="inputEmail">Email address</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+              <label for="inputPassword">Password</label>
+            </div>
+          </div>
+        
+          <!-- <div class="form-group">
+            <div class="form-label-group">
+              <input type="number" id="inputNumber" class="form-control" placeholder="Number" required="required">
+              <label for="inputNumber">Phone number</label>
+            </div>
+          </div> -->
+          <div class="form-group">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="remember-me">
+                Remember Password
+              </label>
+            </div>
+          </div>
+          <button type="submit" name="add" id="submitButton" class="btn btn-success btn-sm">Log In</button>
+        </form>
+        <div class="text-center">
+          <a class="d-block small mt-3" href="register.html">Register an Account</a>
+          <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script>
+    
+    var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/++[++^A-Za-z0-9+/=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
+
+    // Getting my form elements
+    const api="http://137.117.199.40:8096/access/v1/login"; // this is my login endpoint  
+
+    const emailValue = document.getElementById("inputEmail");
+    const passwordValue = document.getElementById("inputPassword");
+    // const numberValue = document.getElementById("inputNumber");
+    const submitButton = document.getElementById("submitButton");
+
+    
+    submitButton.addEventListener("click",($event) => {
+      $event.preventDefault();
+      const post = {
+        email : inputEmail.value, 
+        password : Base64.encode(inputPassword.value),
+        // phoneNumber : inputNumber.value,
+        requestId:"",
+        roleClaimId:[
+          0
+        ]
+      };
+      console.log(post);
+      submitFormData(post);
+
+    }) 
+
+
+
+    function makeRequest(data){
+      return new Promise((resolve, reject) => {
+        let request = new XMLHttpRequest();
+        request.open("POST",api);
+
+
+
+        request.onreadystatechange = () => {
+          if(request.readyState === 4) {
+            if(request.status === 201 || request.status === 200) {
+              console.log(request.response)
+              resolve(JSON.parse(request.response));
+             let token = request.getResponseHeader('Authorization');
+                window.location.href = "index.html";
+            }else {
+              reject(JSON.parse(request.response)); 
+              console.log(request.response)
+            }
+          }
+        }; 
+        request.setRequestHeader("Content-Type","application/json");  
+        request.send(JSON.stringify(data)); 
+        var myHeader = XMLHttpRequest.getResponseHeader(Authorization);
+        console.log(myHeader);
+      });
+      localStorage.setItem(token);  
+    }
+
+      async function submitFormData(post){
+        try{
+          const requestPromise = makeRequest(post);
+          const response = await requestPromise;
+          console.log(response)
+        }catch(errorResponse){
+          console.log(errorResponse);
+        // responseMessage.textContent = errorResponse.error;
+
+      }
+    }
+
+  </script>
+
+
+</body>
+
+</html>
+
+  
+
+
