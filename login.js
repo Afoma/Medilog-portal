@@ -9,7 +9,6 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
 var TokenUrl = "http://137.117.199.40:8096/access/vi/login"; // Your application token endpoint  
 
 
-
 function getToken() {
 let emailValue = document.getElementById("inputEmail").value;
 let passwordValue = document.getElementById("inputPassword").value;
