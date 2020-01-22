@@ -129,7 +129,7 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <!-- <h6 class="dropdown-header">Lists of:</h6> -->
           <a class="dropdown-item" href="listOfPharmacies.html"> Pharmacies</a>
-          <a class="dropdown-item" href="listofPharmacyUsers.html">Pharmacy Users</a>
+          <a class="dropdown-item" href="listofPharmacyBranches.html">Pharmacy Branches</a>
         </div>
       </li>  
       <li class="nav-item dropdown">
@@ -369,15 +369,13 @@
 
     logOutValue.addEventListener("click", logOut);
 
+    logOutValue = addEventListener("click",(event) => {
+      $event.preventDefault();
+      request.getResponseHeader('Authorization');
+      window.location.href = "login.html";
+      logOut();
+    })
 
-  // function logOut() {
-  //   fixture("DELETE /api/session", function logOut() {
-  //   localStorage.removeItem("session");
-  //   return {};
-  //   Request: DELETE /api/session
-  //   Response:STATUS: 200
-  //   {}
-  // }
 
 
 function logOut() {
@@ -386,6 +384,9 @@ function logOut() {
             type: "delete"
         }).then(function() {
             return Promise.reject({ message: "Unauthorized" });
+            request.getResponseHeader('Authorization');
+            window.location.href = "login.html";
+
         });
     }
 

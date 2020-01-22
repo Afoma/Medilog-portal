@@ -106,7 +106,6 @@
         request.open("POST",api);
 
 
-
         request.onreadystatechange = () => {
           if(request.readyState === 4) {
             if(request.status === 201 || request.status === 200) {
@@ -125,7 +124,7 @@
         var myHeader = XMLHttpRequest.getResponseHeader(Authorization);
         console.log(myHeader);
       });
-      localStorage.setItem(token);  
+      localStorage.setItem(token);
     }
 
       async function submitFormData(post){

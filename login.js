@@ -15,7 +15,7 @@ let passwordValue = document.getElementById("inputPassword").value;
 let numberValue = document.getElementById("inputNumber").value;
 let payLoad={
 email: emailValue,
-password: passwordValue,
+password: passwordValue, 
 phoneNumber: numberValue,
 requestId: "",
 roleClaimId: [
