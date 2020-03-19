@@ -75,13 +75,11 @@
 
     // Getting my form elements
     const api="http://137.117.199.40:8096/access/v1/login"; // this is my login endpoint  
-
     const emailValue = document.getElementById("inputEmail");
     const passwordValue = document.getElementById("inputPassword");
     // const numberValue = document.getElementById("inputNumber");
     const submitButton = document.getElementById("submitButton");
 
-    
     submitButton.addEventListener("click",($event) => {
       $event.preventDefault();
       const post = {
@@ -95,23 +93,20 @@
       };
       console.log(post);
       submitFormData(post);
+    })
 
-    }) 
-
-
-
+    //localStorage.setItem("authorizationKey", token.stringify);
     function makeRequest(data){
       return new Promise((resolve, reject) => {
         let request = new XMLHttpRequest();
         request.open("POST",api);
-
-
         request.onreadystatechange = () => {
           if(request.readyState === 4) {
             if(request.status === 201 || request.status === 200) {
               console.log(request.response)
               resolve(JSON.parse(request.response));
              let token = request.getResponseHeader('Authorization');
+             console.log(typeof(token));
                 window.location.href = "index.html";
             }else {
               reject(JSON.parse(request.response)); 
@@ -124,7 +119,6 @@
         var myHeader = XMLHttpRequest.getResponseHeader(Authorization);
         console.log(myHeader);
       });
-      localStorage.setItem(token);
     }
 
       async function submitFormData(post){
@@ -132,18 +126,13 @@
           const requestPromise = makeRequest(post);
           const response = await requestPromise;
           console.log(response)
-        }catch(errorResponse){
+        } catch(errorResponse){
           console.log(errorResponse);
         // responseMessage.textContent = errorResponse.error;
-
       }
-    }
-
+    } 
   </script>
-
-
 </body>
-
 </html>
 
   

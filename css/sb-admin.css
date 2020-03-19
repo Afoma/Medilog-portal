@@ -10,6 +10,7 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+ 
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -10849,23 +10850,23 @@ body {
 }
 
 .form-label-group input::-webkit-input-placeholder {
-  color: transparent;
+  color:  #6c757d;
 }
 
 .form-label-group input:-ms-input-placeholder {
-  color: transparent;
+  color:  #6c757d;
 }
 
 .form-label-group input::-ms-input-placeholder {
-  color: transparent;
+  color:  #6c757d;
 }
 
 .form-label-group input::-moz-placeholder {
-  color: transparent;
+  color:  #6c757d;
 }
 
 .form-label-group input::placeholder {
-  color: transparent;
+  color:  #6c757d;
 }
 
 .form-label-group input:not(:placeholder-shown) {

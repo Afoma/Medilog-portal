@@ -10,6 +10,8 @@
   <meta name="author" content="Afoma Antoinette Orji">
 
   <title>MediLog Admin - Add Pharmacy Branch</title>
+<!-- From Bootstrap documentation -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -71,20 +73,21 @@
         </div>
       </li>
       <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user-circle fa-fw"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+        <!-- <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+          <!-- <i class="fas fa-user-circle fa-fw"></i> -->
+          <button type="submit" name="add" id="submitButton" class="btn btn-success btn-sm">Log Out</button>
+        <!-- </a> -->
+        <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="#">Settings</a>
           <a class="dropdown-item" href="#">Activity Log</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-        </div>
+        </div> -->
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
           <a class="nav-link" href="login.html">
           <span>Log Out</span></a>
-      </li>  
+      </li>   --> 
     </ul>
 
   </nav>
@@ -99,55 +102,38 @@
           <span>Dashboard</span>
         </a>
       </li>
-      <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <a class="dropdown-item" href="login.html">Login</a>
-          <a class="dropdown-item" href="register.html">Register</a>
-          <a class="dropdown-item" href="forgot-password.html">Forgot Password</a> -->
-          <!-- <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Other Pages:</h6>
-          <a class="dropdown-item" href="404.html">404 Page</a>
-          <a class="dropdown-item active" href="blank.html">Blank Page</a> -->
-        <!-- </div> -->
-      <!-- </li> -->
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Charts</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
-      </li>
       <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-fw fa-table"></i>
-              <span>Lists</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-              <!-- <h6 class="dropdown-header">Lists of:</h6> -->
-              <a class="dropdown-item" href="listOfPharmacies.html"> Pharmacies</a>
-              <a class="dropdown-item" href="listofPharmacyBranches.html">Pharmacy Branches</a>
-            </div>
-          </li>  
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-fw fa-folder"></i>
-              <span>Admin</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-              <h6 class="dropdown-header">Add:</h6>
-              <a class="dropdown-item" href="addPharmacy.html"> Pharmacy</a>
-              <a class="dropdown-item" href="addPharmacyBranch.html"> Pharmacy Branch</a>
-              <a class="dropdown-item" href="addUserUnderPharmacy.html"> User Under Pharmacy</a> 
-            </div>
-          </li>    
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Lists</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <!-- <h6 class="dropdown-header">Lists of:</h6> -->
+          <a class="dropdown-item" href="listOfPharmacies.html"> Pharmacies</a>
+          <!-- <a class="dropdown-item" href="listofPharmacyBranches.html">Pharmacy Branches</a> -->
+        </div>
+      </li>  
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Admin</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <h6 class="dropdown-header">Add:</h6>
+          <a class="dropdown-item" href="addPharmacy.html"> Pharmacy</a>
+          <a class="dropdown-item" href="addPharmacyBranch.html"> Pharmacy Branch</a>
+          <a class="dropdown-item" href="addUserUnderPharmacy.html"> User Under Pharmacy</a> 
+        </div>
+      </li>    
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="login.html">
+        <span>Log Out</span></a>
+    </li>   -->
     </ul>
 
     <div id="content-wrapper">
@@ -168,59 +154,47 @@
               <div class="card-header">Add Pharmacy Branch</div>
               <div class="card-body">
                 <form>
-
-                  <div class="form-group">
-                    <div class="form-label-group">
-                      <p>Address</p>
-                      <input type="text" id="address" class="form-control" required="required" autofocus="autofocus">
-                      <!-- <label for="inputEmail"></label> -->
-                    </div>
-                  </div>
-
                   <div class="form-group">
                     <div class="form-label-group">
                       <p>Branch Name</p>
                       <input type="text" id="branchName" class="form-control" required="required" autofocus="autofocus">
+                      <!-- <label for="inputEmail"></label> -->
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-label-group">
+                      <p>Address</p>
+                      <input type="text" id="address" class="form-control" required="required" autofocus="autofocus">
                         <!-- <label for="inputEmail">Location</label> -->
                     </div>
                   </div>
-
                   <div class="form-group">
-                      <div class="form-label-group">
-                        <p>Parent Name</p>
-                        <input type="text" id="parentName" class="form-control" required="required" autofocus="autofocus">
-                          <!-- <label for="inputEmail">Location</label> -->
-                      </div>
-                    </div>
-  
-        
-                  <!-- <div class="form-group">
                     <div class="form-label-group">
-                      <p>Pharmacy Branch address</p>
-                      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required"> -->
-                      <!-- <label for="inputPassword">Password</label> -->
-                    <!-- </div>
-                  </div> -->
-        
-                  <!-- <div class="form-group">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox" value="remember-me">
-                        Remember Password
-                      </label>
+                      <p>Phone Number 1</p>
+                      <input type="number" id="phoneNumber1" class="form-control" required="required" placeholder="Required for adding pharmacy users" autofocus="autofocus">
+                      <!-- <label for="inputNumber">Phone number</label> -->
                     </div>
-                  </div> -->
+                  </div>          
+                  <div class="form-group">
+                    <div class="form-label-group">
+                      <p>Phone Number 2</p>
+                      <input type="number" id="phoneNumber2" class="form-control" autofocus="autofocus">
+                      <!-- <label for="inputNumber">Phone number</label> -->
+                    </div>
+                  </div>          
+                  <div class="form-group">
+                    <div class="form-label-group">
+                      <p>Parent Company</p>
+                      <input type="text" id="parentCompany" class="form-control" required="required" autofocus="autofocus">
+                      <!-- <label for="firstName">Pharmacy Name</label> -->
+                    </div>
+                  </div>  
                   <a id="submitButton" class="btn btn-primary btn-block" href="index.html">Add Pharmacy Branch</a>
                 </form>
-                <div class="text-center">
-                  <!-- <a class="d-block small mt-3" href="register.html">Register a Pharmacy</a> -->
-                  <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
-                </div>
-              </div>
+             </div>
             </div>
           </div>
         
-
       </div>
       <!-- /.container-fluid -->
 
@@ -254,7 +228,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <!-- <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div> -->
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
           <a class="btn btn-primary" href="login.html">Logout</a>
@@ -275,16 +249,13 @@
   <script>
     
       var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/++[++^A-Za-z0-9+/=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
-  
       // Getting my form elements
       const api="http://137.117.199.40:8096/access/v1/institution/new/branch"; // this is my login endpoint  
-
-      const address = document.getElementById("address");
       const branchName = document.getElementById("branchName");
-      const parentName = document.getElementById("parentName");
+      const address = document.getElementById("address");
+      const parentName = document.getElementById("parentCompany");
       const bearerToken = "Bearer 10QDG4pZauMeEhspV8QdYQ"; 
   
-      
       submitButton.addEventListener("click",($event) => {
         $event.preventDefault();
        const put = {
@@ -305,7 +276,7 @@
         };
       console.log(put);
         submitFormData(put);
-      }) 
+      })
   
   
   

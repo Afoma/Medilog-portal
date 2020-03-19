@@ -11,14 +11,6 @@
 
   <title>MediLog Admin - List of Pharmacy Users</title>
 
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-  <!-- Page level plugin CSS-->
-  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
 
 </head>
 
@@ -71,20 +63,21 @@
         </div>
       </li>
       <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user-circle fa-fw"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+        <!-- <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+          <!-- <i class="fas fa-user-circle fa-fw"></i> -->
+          <button type="submit" name="add" id="submitButton" class="btn btn-success btn-sm">Log Out</button>
+        <!-- </a> -->
+        <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="#">Settings</a>
           <a class="dropdown-item" href="#">Activity Log</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-        </div>
+        </div> -->
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
           <a class="nav-link" href="login.html">
           <span>Log Out</span></a>
-      </li>  
+      </li>   -->
     </ul>
 
   </nav>
@@ -164,7 +157,7 @@
           <li class="breadcrumb-item">
             <a href="#">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">Tables</li>
+          <li class="breadcrumb-item active">List of pharmacy branches</li>
         </ol>
 
         <!-- DataTables Example -->
@@ -174,57 +167,20 @@
             Data Table </div>
           <div class="card-body">
             <div class="table-responsive">
+              <h6>Pharmacy Branches registered under Medilog</h6>
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Username</th>
-                    <th>Location</th>
-                    <th>Office</th>
+                    <th>Pharmacy Branches</th>
                   </tr>
                 </thead>
-                <tfoot>
-                  <tr>
-                    <th>Username</th>
-                    <th>Location</th>
-                    <th>Office</th>
-                  </tr>
-                </tfoot>
-                <tbody>
-                  <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
+                <tbody id="pharmacyBranches">
                 </tbody>
               </table>
             </div>
           </div>
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
-
-        <p class="small text-center text-muted my-5">
-          <em>More table examples coming soon...</em>
-        </p>
 
       </div>
       <!-- /.container-fluid -->
@@ -283,7 +239,47 @@
   <script src="js/sb-admin.min.js"></script>
 
   <!-- Demo scripts for this page-->
-  <script src="js/demo/datatables-demo.js"></script>
+  <script src="js/demo/datatables-demo.js"></script>  
+    <!-- Code for fetching list -->
+  <script>
+    $(document).ready(function() {
+    // create an element 
+      function createNode(element){
+      return document.createElement(element);
+      };
+    // append an element to parent
+      function appendNode(parent, el){
+        return parent.appendChild(el);
+      }
+      async function fetcher() {
+        const url = `http://137.117.199.40:8096/access/v1/institution/${branchId}/all`;       
+        let fetchVariable = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'tokenId': 'Bearer 10QDG4pZauMeEhspV8QdYQ'
+          }
+        });
+        return await fetchVariable.json();
+        }
+      fetcher().then((data) => {
+        data.map((value) => {
+          let trNode = createNode('tr');
+          // let tdNode = createNode('td');
+          let tdNameNode = createNode('td');
+          tdNameNode.innerText = value.name;
+          // tdNode.innerText = "-";
+          trNode.appendChild(tdNameNode);
+          // trNode.appendChild(tdNode);
+          const tBody = document.getElementById("pharmacyBranches");
+          tBody.appendChild(trNode);
+        })
+      })
+    // Call the dataTables jQuery plugin
+      $('#dataTable');
+     });
+  </script>
+
   
 </body>
 
